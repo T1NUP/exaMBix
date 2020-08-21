@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="dashboard">
+<meta content="uses quoteSer.php,dash.css">
+<meta name="author" content="">
+
+<title>
+    EXAM BIX
+</title>
+<link rel="icon" href="https://cdn3.iconfinder.com/data/icons/letters-and-numbers-1/32/letter_Q_blue-512.png">
+
+
+<!---BootStrap Core CSS(act as an import for different classes)-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!--CSS style sheets(used for specic class elements designing)-->
+<link rel="stylesheet" href="dash.css">
+
+<body onscroll="closeNav()" style="background-color: skyblue;">
+    <div class="fluid block text-center row">
+    <nav class="col-12 flex fluid navbar-dark bg-primary  border-bottom border-dark shadow">
+        <span class="navbar-text text-dark font-weight-normal display-4" id="appName">
+            <img class="mr-2 mb-2" alt="Nothing" width="60px" height="60px" src="https://cdn3.iconfinder.com/data/icons/letters-and-numbers-1/32/letter_Q_blue-512.png">
+            <u>exaMBix</u>
+        </span>
+        <span class="pt-4 pl-3" style="float: left;;font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <nav>
+    </div>
+    <!-- <div class="row font-weight-normal pt-2 pl-3 text-dark " id="u" style="background-color: cyan;"></div> -->
+    <div class="body row">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="AboutUs.html">About</a>
+            <a href="Mymark.php">My Marks</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+          </div>
+         
+        <script>
+            //for side bar
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "250px";
+            }
+            
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+        <div class="col-sm text-center px-3 ">
+            
+            <div class="jumbotron jumbotron-fluid mx-3 my-5 transparent" >
+                <div class="container">
+                  <h1 class="display-4" id="u"></h1>
+                  <p class="lead" id="quote">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-sm px-5 py-3" style="background-color: rgba(255, 255, 255, 0.616);">
+            
+            <div class="card my-3 px-4 pt-3">
+                <div class="card-header text-center">
+                  <b><i>Create Quiz!</i></b>
+                </div>
+                <div class="card-body">
+                 <!-- <h5 class="card-title">Special title treatment</h5>-->
+                  <p class="card-text"><i>Create your own questions and publish them...It's simple and easy. Press Proceed to continue.</i></p>
+                  <button type="button" id="trig" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;"><b>PROCEED</b></button>
+        
+                </div>
+            </div>
+
+            <div class="modal dialog" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Data Info</h5><br>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h6 class="text-muted"><i>Please enter the details about your quiz...</i></h6>
+                        <form class="py-2 px-3 text-dark" action="createQ.php" method="POST">
+                            User: <input type="test" name="user" id="us" readonly><br><br>
+                            Email: <input type="email" name="email" id="em" readonly><br><br>
+                            Header for test: <input type="text" name="head" required><br><br>
+                            <!--<div id="em"></div> <input type="email" name="email"><br>--->
+                            Time (in minutes): <input type="number" name="time" min='1'><br><br>
+                            No. of questions: <input type="number" name="total" min='1' required><br><br>
+                            <div class="border"></div><br>
+                            <input class="bg-primary" name="sub" type="submit" style="float: right;"><br>
+                        </form>
+                      </div>
+                      <script>
+                        var l=localStorage.getItem('email');
+                        var m=localStorage.getItem('user');
+                        document.getElementById('us').value=m;
+                        document.getElementById('em').value=l;
+                      </script>
+
+                        <!---<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      --->
+                    </div>
+                  </div>
+            </div>
+
+            <div class="card my-3 px-3 pt-3">
+                <div class="card-header text-center">
+                    <b><i>Attempt Quiz!</i></b>
+                </div>
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Special title treatment</h5> -->
+                  <p class="card-text"><i>Have a quiz id? Enter the quiz by clicking the proceed button.</i></p>
+                  <!---<a href="#" class="btn btn-primary" style="float: right;"><b>PROCEED</b></a>--->
+                  <button type="button" id="trig" class="btn btn-primary" data-toggle="modal" data-target="#enterQuiz" style="float: right;"><b>PROCEED</b></button>
+                </div>
+            </div>
+
+            <div class="modal dialog" id="enterQuiz" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog bd-example-modal-sm" role="document">
+                  <div class="modal-content text-center">
+                    <!--<div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Data Info</h5><br>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>-->
+                    <div class="modal-body">
+                      <h6 class="text-muted"><i>Please enter the Quiz Id & email of author to enter the Exam...</i></h6>
+                      <form class="py-2 px-3 text-dark" action="enterQ.php" method="POST">
+                          Quiz Id: <input type="number" name="qid" id="us" min='1' required><br><br>
+                          Email Id: <input type="email" name="emi" id="us" required>
+                          <input type="hidden" name="user" id="us1" readonly><!--for storing ans-->
+                          <input type="hidden" name="email" id="em1" readonly><br><br><!--for storing ans-->
+                          <input class="btn bg-primary mx-auto" name="sube" type="submit" ><br>
+                      </form>
+                    </div>
+
+                    <script>
+                      var l=localStorage.getItem('email');
+                      var m=localStorage.getItem('user');
+                      document.getElementById('us1').value=m;
+                      document.getElementById('em1').value=l;
+                    </script>
+
+                  </div>
+              </div>
+            </div>
+
+            <div class="card my-3 px-3 pt-3">
+                <div class="card-header text-center">
+                    <b><i>Check!</i></b>
+                </div>
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Special title treatment</h5> -->
+                  <p class="card-text"><i>Evalute your quiz takers.</i></p>
+                  <button type="button" id="trig" class="btn btn-primary" data-toggle="modal" data-target="#chkQuiz" style="float: right;"><b>EVALUATE</b></button>
+                </div>
+            </div>
+
+            <div class="modal dialog" id="chkQuiz" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog bd-example-modal-sm" role="document">
+                  <div class="modal-content text-center">
+                      <div class="modal-body">
+                      <h6 class="text-muted"><i>Please enter the Quiz Id & email of author to enter the Exam...</i></h6>
+                      <form class="py-2 px-3 text-dark" action="studentList.php" method="POST">
+                          Quiz Id: <input type="number" name="qid" id="us" min='1' required><br><br><!--Quiz id to evaluate-->
+                          <input type="hidden" name="user" id="ua2" readonly><!--username of the author-->
+                          <input type="hidden" name="email" id="ea2" readonly><br><br><!--email of the author-->
+                          <input class="btn bg-primary mx-auto" name="sube" type="submit" ><br>
+                      </form>
+
+                      <script>
+                        var l=localStorage.getItem('email');
+                        var m=localStorage.getItem('user');
+                        document.getElementById('ua2').value=m;
+                        document.getElementById('ea2').value=l;
+                      </script>
+
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        //for getting user and displaying it
+        var user= localStorage.getItem("user");
+        document.getElementById("u").innerHTML= "<i>Welcome back</i><br> "+user+"";
+    </script>
+    <script>
+
+        //$('#exampleModalCenter').on('shown.bs.modal', function () {
+        //$('#trig').trigger('focus')
+        //})
+
+        //for changeing text in jumbotron
+        var myObj,t,i=0,l,y;
+        window.addEventListener('load', function(){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            myObj = JSON.parse(this.response);
+            l= myObj.length;
+            t= l;
+        }
+        };
+        xmlhttp.open("GET", "quoteSer.php", true);
+        xmlhttp.send();
+        var y= setInterval("disp()",3000);
+        });
+        function disp(){
+        if(l>0){
+            document.getElementById("quote").innerHTML=myObj[l-1];
+            l--;
+        }
+        else
+            l=t;
+        }
+    </script>
+</body>
